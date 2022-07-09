@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我的艺术画廊</title>
+  <link rel="stylesheet" href="main.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200;400;900&family=Poppins&display=swap"
+    rel="stylesheet">
+  <script src="https://kit.fontawesome.com/fa79f509a7.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <section class="header">
+    <nav>
+      <h2>艺术画廊</h2>
+      <div id="navLinks">
+        <i class="fa-solid fa-xmark" onclick="hideMenu()"></i>
+        <a href="#">首页</a>
+        <a href="#origin">近代艺术的起源</a>
+        <a href="clique.html">艺术画派</a>
+        <a href="maestro.html">画派大师</a>
+        <a href="works.html">大师作品</a>        
+        <a href="model.html">当代艺术</a>
+        <a href="summmary.html">总结</a>
+      </div>
+      <i class="fa-solid fa-bars" onclick="showMenu()"></i>
+    </nav>
+    <div class="text-box">
+      
+      <h1>艺术画廊</h1>
+      <p>艺术起源于人类的梦想和幻，艺术以一种呈现给感官的方式传达世界的某种性质。</p>
+      
+    </div>
+  </section>
+
+  <section id="origin">
+    <h1>近代艺术</h1>
+    <p>整个现代艺术可以说是一部艺术家的叛逆和革新的历史。</p>
+    <div class="row">
+      <div class="col">
+        <h3>Origin</h3>
+        <p>现代艺术的瓦解起源于古代地中海沿岸（埃及、希腊、西亚）的西方艺术到19世纪后期，出现了转变的苗头，这个苗头进入20世纪后，成为西方艺术的主流，这就是西方的现代艺术。可以把西方现代艺术看成是一座大厦。由各种不同类型的视觉风格组合而成，建造这所大厦的原理，是科学和理性。这是西方数百年来的思想文化核心，也是我们这里比较缺乏的东西，西方人凭借这些在技术和社会管理方面取得飞速进步；但也带来局限，是抑制生命的部分活力，比如男女相悦离不开自然的吸引力，如果只从职位、收入、门第角度考虑和计算，理性态度是有了，但感情会受影响。所以，在涉及人类情感和性灵的地方，不能只听科学的。</p>
+      </div>
+      <div class="col">
+        <h3>Develop</h3>
+        <p>现代艺术史上涌现出各种艺术运动和各种主义，比如印象派、前印象派、后印象派、原始主义、立体主义、未来主义、达达主义、超现实主义，一直到后现代主义等等。
+          在这些主义形成的背后有着30多个艺术运动和流派，而且有的在各个国家的表现也很不同，涉及的艺术家就更多了，有上百位代表的艺术家。         
+          整个现代艺术史的发展历史可以说是一部艺术家的叛逆和革新的历史.</p>   
+      </div>
+      <div class="col">
+        <h3>Influence</h3>
+        <p>艺术是人类在历史进程中，通过不断认识社会，认识自然，认识自我后，创造出来的精神文明和精神财富，它跟物质文明的作用是平行的，物质文明可以满足人们的衣食住用行，吃喝玩乐，而艺术可以满足除过物质需求之外，人们大部分的的精神需求，对社会的作用是非常突出的。
+          艺术是对现实生活的升华和重塑，艺术家创作时，往往会根据个人的审美经验，以及大众的共同趣味，把生活中的正能量元素进行放大，以典型化手法，让美好的事物更加美好，优秀的更加优秀，欣赏者看到后，自然会大大增加精神上的能量，产生牢不可破的信念。
+          艺术在人类社会进程中的力量在历史中显现出来，任何一种社会形态中，艺术总是深刻影响其意识形态，引导整个人文思想的发展与进步，客观也影响着其社会兴盛。历史上每一次的时代繁荣都与艺术的大力发展有关。艺术不但与人类的发展有关，同样影响着人本身，影响人的修养、格调、观念。艺术有关之例数不胜数，宗教，权利，音乐，舞蹈，同样艺术还带动了大量产业的发展。
+        </p>
+      </div>      
+    </div>
+  <div class="text-box">
+    <a href="clique.html" class="hero-btn">进入</a>
+  </div>
+  </section>
+
+    <script>
+        var navLinks = document.getElementById('navLinks');
+           
+        function showMenu() {
+          navLinks.style.right = '0';
+          navLinks.addEventListener('click',function(){
+            hideMenu();
+          })
+          
+        }
+    function hideMenu() {
+        navLinks.style.right = '-30%';
+      }
+  
+      function showFullImage(event) {
+        // 设置要全屏显示的图片src
+        document.getElementById('fullImage').src = event.target.src;
+        // 得到Y滚动条宽度
+        // innerWidth是以像素为单位的窗口的内部宽度。如果垂直滚动条存在，则这个属性将包括它的宽度
+        // offsetWidth 是一个只读属性，返回一个元素的布局宽度
+        var scrollbarWidth = window.innerWidth - document.body.offsetWidth;
+        // body不能滚动      
+        document.body.style.overflowY = 'hidden';
+        // 防止页面在隐藏滚动条时闪动      
+        document.body.style.marginRight = scrollbarWidth + 'px';
+  
+        var popup = document.getElementById('popup');
+        popup.style.display = 'flex';
+        popup.style.animation = 'fadein 0.5s';
+        popup.onclick = function () {
+          popup.style.animation = 'fadeout 0.6s';
+          // 延时将display置为none，以让有时间动画。注意设置隐退的时间多一点会更平滑。
+          setTimeout(() => {
+            document.body.style.overflowY = 'auto';// body恢复滚动
+            document.body.style.marginRight = 0;          
+            popup.style.display = 'none';
+          }, 500);
+        }
+      }
+    </script>
+  </body>
+  
+  </html>

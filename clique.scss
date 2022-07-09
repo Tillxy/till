@@ -1,0 +1,268 @@
+// 变量
+$small: 576px;
+$medium: 768px;
+$large: 1024px;
+
+// 混合器，可进行代码复用
+@mixin heroButton {
+  .hero-btn {
+    display: inline-block; // 行内块
+    text-decoration: none; // 无默认超链接修饰
+    color: rgb(20, 175, 231);
+    border: 2px solid rgb(4, 61, 147);
+    padding: 0.7rem 2.2rem;
+    border-radius: 2rem;
+    font-size: .8rem;
+    background: transparent; // 透明背景
+    cursor: pointer;
+    transition: 0.5s; // 过渡持续时间
+
+    &:hover {
+      border: 2px solid antiquewhite;
+      background: #0c0201;
+    }
+  }
+}
+
+@mixin section {
+  width: 80%;
+  margin: 2rem auto; // section水平居中
+  text-align: center // section中的文字居中
+
+  h1 {
+    font-size: 3.5rem;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, .5); // 文本阴影
+  }
+
+  p {
+    color: #777;
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+    padding: 0.7rem;
+  }
+}
+
+@mixin row {
+  display: flex;
+  flex-wrap: wrap; // 自动换行
+  margin-top: 3%;
+  justify-content: space-between;
+  // medium以下
+  @media(max-width: $medium) {
+    flex-direction: column;
+  }
+}
+
+* {
+  margin: 0; // 取消浏览器默认的边距
+  padding: 0;
+  font-family: 'Noto Serif SC', serif; // 自定义字体
+}
+
+html {
+  background-color: antiquewhite;
+  scroll-behavior: smooth; // 平滑滚动
+  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5)), url(image/sleep.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+// 全屏header，包含导航和居中文本
+.header {
+  height: 100vh;
+  
+  // header中的textBox需要absolute定位在页面中间（此处也可取消，因为没有则相对于body）。如果采用flex也可取消。
+  // position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  // 导航
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    // 相对父元素的宽度
+    margin: 1% 5%;
+
+    // Logo样式
+    h2 {
+      color: antiquewhite;
+
+      span {
+        color: #f44336
+      }
+
+      // 小屏幕居中
+      @media(max-width:$medium) {
+        margin: auto;
+      }
+    }
+
+    #navLinks {
+      display: flex;
+
+      a {
+        text-decoration: none;
+        color: antiquewhite;
+        font-size: 1.2rem;
+        padding: .5rem .75rem;
+
+        &::after {
+          display: block;
+          content: '';
+          height: 2px;
+          width: 0;
+          background-color: #f44336;
+          margin: auto; //可让过渡效果从中间开始
+          transition: .5s;
+        }
+
+        &:hover::after {
+          width: 100%;
+        }
+
+        // 屏幕查询，中屏以下应用。一般原则如下：
+        // 使用max-width查询，则该尺寸及以下屏幕应用
+        // 使用min-width查询，则该尺寸及以上屏幕应用
+        @media(max-width:$medium) {
+          text-align: center;
+
+          &:hover {
+            color: #f44336;
+            background-color: antiquewhite;
+          }
+        }
+      }
+
+      // 中屏以下转换为侧边菜单
+      @media(max-width: $medium) {
+        // 单列
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        right: -30%;
+        height: 100%;
+        width: 30%;
+        background-color: #1597cb;
+        z-index: 1; //z-index默认为auto，只有负值比其小
+        transition: .7s;
+
+      }
+    }
+
+    // 菜单和关闭按钮,默认不显示
+    .fa-bars,
+    .fa-xmark {
+      color: antiquewhite;
+      padding: 0.5rem 0.75rem;
+      font-size: 1.5rem;
+      cursor: pointer;
+      display: none;
+
+      @media(max-width: $medium) {
+        display: block;
+      }
+    }
+
+  }
+
+  .text-box {
+    position: relative;
+    text-align: center;
+    color: antiquewhite;
+    margin: 10px 10px 10px 10px;
+    animation-name: qb;
+  animation-duration: 2s;
+  animation-delay: 0s;
+  animation-fill-mode:forwards;
+  @keyframes qb
+{
+  from{
+    top: -30%;
+  }
+  to{
+    top:5%;
+  }
+}// 父容器使用了flex-column布局，所以此处margin设为auto即可达到垂直居中
+
+    // 也使用绝对定位然后用transform变换进行水平垂直居中
+    // position: absolute;
+    // top: 50%;
+    // left: 50%;
+    // transform: translate(-50%, -50%);
+
+    h1 {
+      // 夹断函数，动态调整字体大小：期望以5vw显示，但只能在2～5rem之间
+      font-size: clamp(2rem, 5vw, 2rem); 
+      // 脉冲动画  
+      .pulser {
+        display: inline-block;
+        color:#f44336;
+        border-radius: 50%;      
+        animation: pulse 3s infinite;
+        @keyframes pulse {
+          0% {
+            box-shadow: 0 0 0 0px rgba(255, 255, 255,0.5);
+          }
+          100% {
+            box-shadow: 0 0 20px 20px rgba(0,0,0,0);
+          }
+        }
+      }     
+    }
+
+    p {
+      margin: .7rem 0 2.5rem;
+      font-size: clamp(1rem, 1.5vw, 1.5rem);
+    }
+
+}
+
+.origin {
+
+  .row {
+    @include row();
+
+    .col {
+      // 指定item宽度，否则将由flex根据内容自动调整
+      flex-basis: 31%;
+      background-color: rgba(231, 171, 20, 0.1);
+      border-radius: 0.8rem;
+      margin-bottom: 2rem;
+      transition: 0.5s;
+      // 本身也为flex容器
+      display: flex;
+      flex-direction: column;
+
+      // large以下2列
+      @media(max-width:$large) {
+        flex-basis: 45%;
+      }
+
+      &:hover {
+        box-shadow: 0 0 30px rgba(213, 220, 17, 0.689);
+      }
+
+      h3 {
+        margin: 0;
+        padding: 0.5rem;
+        text-align: center;
+        color: rgb(16, 165, 228);
+        background-color: #f8f4f4;
+        // 因为父元素设置了圆角，所以在父元素设置overflow:hidden也可
+        border-left: .8rem;
+        border-top-right-radius: .8rem;
+      }
+
+      p {
+        color: rgb(110, 206, 254);
+        font-size: 1.3rem;
+        padding: 1rem;
+      }
+    }    
+  }
+  
+ }
+}
+

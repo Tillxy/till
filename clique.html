@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我的艺术画廊</title>
+  <link rel="stylesheet" href="clique.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200;400;900&family=Poppins&display=swap"
+    rel="stylesheet">
+  <script src="https://kit.fontawesome.com/fa79f509a7.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <section class="header">
+    <nav>
+      <h2>艺术画廊</h2>
+      <div id="navLinks">
+        <i class="fa-solid fa-xmark" onclick="hideMenu()"></i>
+        <a href="index.html">首页</a>
+        <a href="index.html">近代艺术的起源</a>
+        <a href="maestro.html">画派大师</a>
+        <a href="works.html">大师作品</a>        
+        <a href="model.html">现代艺术</a>
+      </div>
+      <i class="fa-solid fa-bars" onclick="showMenu()"></i>
+    </nav>
+    <div class="text-box">
+      
+      <h1>主要派系</h1>
+      <p>艺术常常是社会环境和变化的反映，是当时文化和社会政治气候的一个重要指标。<br>
+        西方艺术史经历了大量的变化，产生了极其多样化的技术、风格和媒介。<br>
+        这里整理了西方艺术史上重要的6个艺术流派</p>  
+    </div>
+    <div class="origin">
+      <div class="row">
+        <div class="col">
+          <h3>洛可可艺术</h3>
+          <p>洛可可时期，有时也被称为晚期巴洛克，注重装饰，与（早期）巴洛克有所不同。它侧重于幻想的和视觉感官丰富的主题和肖像。这一流派的特点是色彩柔和线条曲折。"洛可可"这个名字是由法语"rocaille"或"coral"翻译而来，rocaille在法语中是碎石或岩石的意思，也指花园石窟中的贝壳工艺，并被用作描述洛可可时期装饰艺术中的蛇形图案。
+
+          </p>
+        </div>
+        <div class="col">
+          <h3>新古典主义</h3>
+          <p>新古典主义是18世纪在意大利庞贝古城被发现后，古典主义在艺术领域的第二次复苏。这一时期，希腊罗马神话题材的绘画、古典风格的雕塑和古代神庙式的建筑急剧增加。它还将古希腊罗马的理想化美学强加在艺术中。</p>   
+        </div>
+        <div class="col">
+          <h3>矫饰主义</h3>
+          <p>矫饰主义是文艺复兴鼎盛时期之后的一个时期，也被称为晚期文艺复兴。该时期的艺术家将文艺复兴时期确立的原则发挥到了新的极致，最终形成了一种对古典主义进行风格化扭曲的美学。它具有高度创造性，通过极端的、戏剧化的场景，有时是幻想的图像来表达想法。
+          </p>
+        </div>
+          <div class="col">
+            <h3>野兽派</h3>
+            <p>
+              野兽派是20世纪早期的现代艺术运动，其特点是明亮的色彩和粗犷的笔触，灵感来自19世纪的色彩理论。野兽派画家是第一个与印象派以及旧的、传统的感知方法决裂的人。他们对自然界自发的、经常是主观的反应是通过大胆的、不加掩饰的笔触和高调的、充满活力的色彩表达出来的。
+            </p>
+          </div>
+          <div class="col">
+            <h3>表现主义</h3>
+            <p>
+              表现主义是20世纪初起源于德国和奥地利的一场国际艺术运动。广义上的表现主义艺术注重情感表达，而非传统美学。它跨越了不同的国家、媒介、运动和时期，融入了幻想、扭曲和动态的元素。因此，表现主义艺术不是由一套美学原则定义的，而是作为一种表达和社会评论的工具。
+            </p>
+          </div>
+          <div class="col">
+          <h3>超现实主义</h3>
+          <p>
+            超现实主义是起源于达达主义先锋派思想的一场现代艺术运动。该运动深受精神分析的影响，专注于探索潜意识和自我分析。它的特点是梦幻般的意象，神话的主题和抽象的象征。
+          </p>
+          </div>
+        </div>      
+      </div>
+    </div>
+  </section>
+
+  
+
+    <script>
+        var navLinks = document.getElementById('navLinks');
+           
+        function showMenu() {
+          navLinks.style.right = '0';
+          navLinks.addEventListener('click',function(){
+            hideMenu();
+          })
+          
+        }
+    function hideMenu() {
+        navLinks.style.right = '-30%';
+      }
+  
+      function showFullImage(event) {
+        // 设置要全屏显示的图片src
+        document.getElementById('fullImage').src = event.target.src;
+        // 得到Y滚动条宽度
+        // innerWidth是以像素为单位的窗口的内部宽度。如果垂直滚动条存在，则这个属性将包括它的宽度
+        // offsetWidth 是一个只读属性，返回一个元素的布局宽度
+        var scrollbarWidth = window.innerWidth - document.body.offsetWidth;
+        // body不能滚动      
+        document.body.style.overflowY = 'hidden';
+        // 防止页面在隐藏滚动条时闪动      
+        document.body.style.marginRight = scrollbarWidth + 'px';
+  
+        var popup = document.getElementById('popup');
+        popup.style.display = 'flex';
+        popup.style.animation = 'fadein 0.5s';
+        popup.onclick = function () {
+          popup.style.animation = 'fadeout 0.6s';
+          // 延时将display置为none，以让有时间动画。注意设置隐退的时间多一点会更平滑。
+          setTimeout(() => {
+            document.body.style.overflowY = 'auto';// body恢复滚动
+            document.body.style.marginRight = 0;          
+            popup.style.display = 'none';
+          }, 500);
+        }
+      }
+    </script>
+  </body>
+  
+  </html>

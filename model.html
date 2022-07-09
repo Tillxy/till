@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我的艺术画廊</title>
+  <link rel="stylesheet" href="model.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200;400;900&family=Poppins&display=swap"
+    rel="stylesheet">
+  <script src="https://kit.fontawesome.com/fa79f509a7.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <section class="header">
+    <nav>
+      <h2>艺术画廊</h2>
+      <div id="navLinks">
+        <i class="fa-solid fa-xmark" onclick="hideMenu()"></i>
+        <a href="index.html">首页</a>
+        <a href="index.html">近代艺术的起源</a>
+        <a href="clique.html">艺术画派</a>
+        <a href="maestro.html">画派大师</a>
+        <a href="works.html">大师作品</a>        
+      </div>
+      <i class="fa-solid fa-bars" onclick="showMenu()"></i>
+    </nav>
+    <div class="text-box">
+      
+      <h1>当代艺术</h1>
+      <p>当代艺术（contemporary art）既可以指“当代时期”的艺术，即现代主义时期结束以后，出现于20世纪下半叶至今的艺术，包括绘画、雕塑、摄影、装置、行为表演和录像等门类；又可以指具有“当代意识”或“当代形式”的艺术，通过各种各样的艺术实验和形式表达，艺术家传递观念，表达看法，而不再仅仅局限于审美的考虑，相关的艺术运动和流派包括波普艺术、观念艺术、大地艺术、贫穷艺术等。当代艺术具有全球性、文化多样性、社会介入性和技术相关性等特点。</p>  
+    </div>
+    <div class="facilities">
+    <div class="row">
+      <div class="col">
+        <img src="image/live.jpg" alt="live" onclick="showFullImage(event)">
+        <h3>《生者对死者无动于衷》</h3>
+        <p>1992年，萨奇画廊举办了“英国年轻艺术家”（YBA）群展。赫斯特在这个展览中的作品《生者对死者无动于衷》，这件作品后来成为了90年代英国当代艺术的经典。赫斯特的作品一走都是“对死亡之于活的生命究竟意味着什么”的喋喋不休的讲述。这件作品很好的展示了这个思考的一个侧面，活着的生命没有能力理解死亡，所以“生者对死者无动于衷”就是回答。</p>
+      </div>
+      <div class="col">
+        <img src="image/girl.webp" alt="girl" onclick="showFullImage(event)">
+        <h3>《拿气球的女孩》</h3>
+        <p>拿气球的女孩》第一次出现在英国伦敦街头，被描述为“讽刺了艺术界的清高”，到2017年在一项民意调查中被评为英国最受欢迎作品，再到2021年被毁坏后“因祸得福”身价涨了16倍，这场表演时长近20年、曾几度反转的行为艺术终于落幕，“导演”班克斯将人们对喧嚣艺术态度的跟风变化，展现得淋漓尽致。</p>
+      </div>
+      <div class="col">
+        <img src="image/mirror.webp" alt="mirror" onclick="showFullImage(event)">
+        <h3>《无限镜室》</h3>
+        <p>965年，草间弥生创作了《无限镜室》(Infinity Mirror Room-Phalli’s Field)。利用镜子，她把她早期绘画和纸上作品的强烈重复转化为一种感性的体验。在她的职业生涯中，这位艺术家已经制作了20多个不同的无限镜室，每一个千变万化的环境都提供了一个充满无限幻想的空间，镜子打造出了一种参与性的体验，使得参观者成为了作品的主体。</p>
+      </div>
+     </div>
+    </div>
+  </section>
+  
+
+    <script>
+        var navLinks = document.getElementById('navLinks');
+           
+        function showMenu() {
+          navLinks.style.right = '0';
+          navLinks.addEventListener('click',function(){
+            hideMenu();
+          })
+          
+        }
+    function hideMenu() {
+        navLinks.style.right = '-30%';
+      }
+  
+      function showFullImage(event) {
+        // 设置要全屏显示的图片src
+        document.getElementById('fullImage').src = event.target.src;
+        // 得到Y滚动条宽度
+        // innerWidth是以像素为单位的窗口的内部宽度。如果垂直滚动条存在，则这个属性将包括它的宽度
+        // offsetWidth 是一个只读属性，返回一个元素的布局宽度
+        var scrollbarWidth = window.innerWidth - document.body.offsetWidth;
+        // body不能滚动      
+        document.body.style.overflowY = 'hidden';
+        // 防止页面在隐藏滚动条时闪动      
+        document.body.style.marginRight = scrollbarWidth + 'px';
+  
+        var popup = document.getElementById('popup');
+        popup.style.display = 'flex';
+        popup.style.animation = 'fadein 0.5s';
+        popup.onclick = function () {
+          popup.style.animation = 'fadeout 0.6s';
+          // 延时将display置为none，以让有时间动画。注意设置隐退的时间多一点会更平滑。
+          setTimeout(() => {
+            document.body.style.overflowY = 'auto';// body恢复滚动
+            document.body.style.marginRight = 0;          
+            popup.style.display = 'none';
+          }, 500);
+        }
+      }
+    </script>
+  </body>
+  
+  </html>
+  

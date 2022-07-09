@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我的艺术画廊</title>
+  <link rel="stylesheet" href="maestro.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200;400;900&family=Poppins&display=swap"
+    rel="stylesheet">
+  <script src="https://kit.fontawesome.com/fa79f509a7.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <section class="header">
+    <nav>
+      <h2>艺术画廊</h2>
+      <div id="navLinks">
+        <i class="fa-solid fa-xmark" onclick="hideMenu()"></i>
+        <a href="index.html">首页</a>
+        <a href="index.html">近代艺术的起源</a>
+        <a href="clique.html">艺术画派</a>
+        <a href="works.html">大师作品</a>        
+        <a href="model.html">当代艺术</a>
+      </div>
+      <i class="fa-solid fa-bars" onclick="showMenu()"></i>
+    </nav>
+    <div class="text-box">
+      
+      <h1>派系大师</h1>
+      <p>下面的几位都是各种派系的主要代表人物，为艺术的发展做出了巨大的贡献，值得被铭记。</p>  
+    </div>
+      <div class="testimonials">
+        <div class="row">
+          <div class="col">
+            <img src="image/mk.jpg" alt="">         
+            <div>
+              <p>
+                爱德华·蒙克（Edvard Munch，1863年12月12日—1944年1月23日），挪威表现主义画家、版画复制匠，现代表现主义绘画的先驱。
+爱德华·蒙克绘画带有强烈的主观性和悲伤压抑的情调。他对心理苦闷的强烈的，呼唤式的处理手法对20世纪初德国表现主义的成长起了主要的影响，其主要作品有《呐喊》《生命之舞》《卡尔约翰街的夜晚》。1944年1月23日，爱德华·蒙克于艾可利逝世。
+              </p>                           
+            </div>
+          </div>
+          <div class="col">
+            <img src="image/ma.jpg" alt="">
+            <div>
+              <p>
+                奥斯卡-克劳德·莫奈（法文：Oscar-Claude Monet，1840年11月14日-1926年12月5日），法国画家，被誉为“印象派领导者”，是印象派代表人物和创始人之一。
+莫奈是法国最重要的画家之一，印象派的理论和实践大部分都有他的推广。莫奈擅长光与影的实验与表现技法。他最重要的风格是改变了阴影和轮廓线的画法，在莫奈的画作中看不到非常明确的阴影，也看不到突显或平涂式的轮廓线。光和影的色彩描绘是莫奈绘画的最大特色。。
+              </p>             
+            </div>
+            </div>
+            <div class="col">
+                <img src="image/bjs.jpg" alt="">
+                <div>
+                    <p>巴勃罗·毕加索（西班牙语：Pablo Picasso，1881年10月25日～1973年4月8日），全名巴勃罗·迭戈·何塞·弗朗西斯科·狄·保拉·胡安·纳波穆西诺·玛莉亚·狄·洛斯·雷梅迪奥斯·西普里亚诺·狄·拉·圣地西玛·特里尼达·路易斯·毕加索（Pablo Diego José Francisco de Paula Juan Nepomuceno María de los Remedios Cipriano de la Santísima Trinidad Ruiz Picasso），西班牙画家、雕塑家，法国共产党党员。是现代艺术的创始人，西方现代派绘画的主要代表。毕加索是当代西方最有创造性和影响最深远的艺术家，是20世纪最伟大的艺术天才之一。代表作品:《格尔尼卡》《和平鸽》《亚威农少女》《生命》。</p>
+                </div>
+            </div>
+            <div class="col">
+                <img src="image/mglt.jpg" alt="">
+                <div>
+                    <p>
+                        勒内·弗朗索瓦·吉兰·马格里特（René François Ghislain Magritte，1898年11月21日～1967年8月15日），比利时画家。早期从事墙纸设计和商业艺术。20世纪20年代与巴黎的超现实主义者交往甚密，并开始潜心作画，宗法超现实主义画风。早期作品包括《会飞的塑像》（1927）和《漂亮的俘虏》（1931）。成熟期的作品色彩更为鲜明，物体位置并列，常以海和天空为题材。代表作有《风云将变》（1928）、《比利牛斯山上城堡》（1959）。
+                    </p>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+  </section>
+
+  
+
+    <script>
+        var navLinks = document.getElementById('navLinks');
+           
+        function showMenu() {
+          navLinks.style.right = '0';
+          navLinks.addEventListener('click',function(){
+            hideMenu();
+          })
+          
+        }
+    function hideMenu() {
+        navLinks.style.right = '-30%';
+      }
+  
+      function showFullImage(event) {
+        // 设置要全屏显示的图片src
+        document.getElementById('fullImage').src = event.target.src;
+        // 得到Y滚动条宽度
+        // innerWidth是以像素为单位的窗口的内部宽度。如果垂直滚动条存在，则这个属性将包括它的宽度
+        // offsetWidth 是一个只读属性，返回一个元素的布局宽度
+        var scrollbarWidth = window.innerWidth - document.body.offsetWidth;
+        // body不能滚动      
+        document.body.style.overflowY = 'hidden';
+        // 防止页面在隐藏滚动条时闪动      
+        document.body.style.marginRight = scrollbarWidth + 'px';
+  
+        var popup = document.getElementById('popup');
+        popup.style.display = 'flex';
+        popup.style.animation = 'fadein 0.5s';
+        popup.onclick = function () {
+          popup.style.animation = 'fadeout 0.6s';
+          // 延时将display置为none，以让有时间动画。注意设置隐退的时间多一点会更平滑。
+          setTimeout(() => {
+            document.body.style.overflowY = 'auto';// body恢复滚动
+            document.body.style.marginRight = 0;          
+            popup.style.display = 'none';
+          }, 500);
+        }
+      }
+    </script>
+  </body>
+  
+  </html>
+  

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我的艺术画廊</title>
+  <link rel="stylesheet" href="works.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200;400;900&family=Poppins&display=swap"
+    rel="stylesheet">
+  <script src="https://kit.fontawesome.com/fa79f509a7.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <section class="header">
+    <nav>
+      <h2>艺术画廊</h2>
+      <div id="navLinks">
+        <i class="fa-solid fa-xmark" onclick="hideMenu()"></i>
+        <a href="index.html">首页</a>
+        <a href="index.html">近代艺术的起源</a>
+        <a href="clique.html">艺术画派</a>
+        <a href="maestro.html">画派大师</a>       
+        <a href="model.html">当代艺术</a>
+      </div>
+      <i class="fa-solid fa-bars" onclick="showMenu()"></i>
+    </nav>
+    <div class="text-box">     
+      <h1>大师作品</h1>
+      <p>不同流派的大师代表作，代表着艺术的巅峰。</p>  
+    </div>
+      <div class="campus">
+    <div class="row">
+      <div class="col">
+        <img src="image/sunrise.jpeg" alt="london" height="400">
+        <div class="layer">
+          <h3>《日出印象》<br>莫奈
+          </h3>
+        </div>
+      </div>
+      <div class="col">
+        <img src="image/starry.jpg" alt="london" height="400">
+        <div class="layer">
+          <h3>《星空》<br>
+          梵高</h3>
+        </div>
+      </div>
+      <div class="col">
+        <img src="image/mnls.webp" alt="london" height="400">
+        <div class="layer">
+          <h3>《蒙娜丽莎的微笑》<br>
+          达芬奇</h3>
+        </div>
+      </div>
+      <div class="col">
+        <img src="image/son.webp" alt="london" height="400">
+        <div class="layer">
+          <h3>《人类之子》<br>
+          马格利特</h3>
+        </div>
+      </div>
+      <div class="col">
+        <img src="image/life.webp" alt="london" height="400">
+        <div class="layer">
+          <h3>《生命之舞》<br>
+          蒙克</h3>
+        </div>
+      </div>
+    </div>         
+    </div>
+    </div>
+    
+  </section>
+
+  
+
+    <script>
+        var navLinks = document.getElementById('navLinks');
+           
+        function showMenu() {
+          navLinks.style.right = '0';
+          navLinks.addEventListener('click',function(){
+            hideMenu();
+          })
+          
+        }
+    function hideMenu() {
+        navLinks.style.right = '-30%';
+      }
+  
+      function showFullImage(event) {
+        // 设置要全屏显示的图片src
+        document.getElementById('fullImage').src = event.target.src;
+        // 得到Y滚动条宽度
+        // innerWidth是以像素为单位的窗口的内部宽度。如果垂直滚动条存在，则这个属性将包括它的宽度
+        // offsetWidth 是一个只读属性，返回一个元素的布局宽度
+        var scrollbarWidth = window.innerWidth - document.body.offsetWidth;
+        // body不能滚动      
+        document.body.style.overflowY = 'hidden';
+        // 防止页面在隐藏滚动条时闪动      
+        document.body.style.marginRight = scrollbarWidth + 'px';
+  
+        var popup = document.getElementById('popup');
+        popup.style.display = 'flex';
+        popup.style.animation = 'fadein 0.5s';
+        popup.onclick = function () {
+          popup.style.animation = 'fadeout 0.6s';
+          // 延时将display置为none，以让有时间动画。注意设置隐退的时间多一点会更平滑。
+          setTimeout(() => {
+            document.body.style.overflowY = 'auto';// body恢复滚动
+            document.body.style.marginRight = 0;          
+            popup.style.display = 'none';
+          }, 500);
+        }
+      }
+    </script>
+  </body>
+  
+  </html>
+  
